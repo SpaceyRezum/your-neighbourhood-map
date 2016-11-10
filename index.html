@@ -14,7 +14,7 @@
 		<div id='top-container'>
 			<div id='sidebar'>
 				<form data-bind='submit: updateMap'>
-					<input id='address' type='textbox' placeholder='Please enter an address...'>
+					<input id='address' type='textbox' placeholder='Please enter an address...' data-bind='textInput: address'>
 					<button type='submit'>Search</button>
 				</form>
 				<div>
@@ -31,7 +31,7 @@
 		  src='https://code.jquery.com/jquery-3.1.1.min.js'
 		  integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8='
 		  crossorigin='anonymous'></script>
-		<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&callback=ViewModel.initMap'></script>
+		<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap'></script>
 		<script type='text/javascript' src='frameworks/knockout-v3.4.1.js'></script>
 		<script type='text/javascript' src='app.js'></script>
 	</body>
