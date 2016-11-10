@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<meta charset='UTF-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		<title>Your new neighborhood map</title>
+		<meta description='Want to find what will be around you in your new neighborhood, enter the address and find out!'>
+		<link rel='stylesheet' type='text/css' href='css/main.css'>
+	</head>
+
+	<body>
+		<div id='top-container'>
+			<div id='sidebar'></div>
+			<div id='map-container'></div>
+		</div>
+
+		<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&callback=ViewModel.initMap'></script>
+		<script type='text/javascript' src='frameworks/knockout-v3.4.1.js'></script>
+		<script
+		  src='https://code.jquery.com/jquery-3.1.1.min.js'
+		  integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8='
+		  crossorigin='anonymous'></script>
+		<script type='text/javascript' src='app.js'></script>
+	</body>
+</html>
