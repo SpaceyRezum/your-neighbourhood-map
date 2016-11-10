@@ -20,7 +20,7 @@
 				<div>
 					<p data-bind='visible: formattedAddress().length > 0'>You searched for:</p>
 					<p data-bind='text: formattedAddress'></p>
-					<p data-bind='visible: formattedAddress().length > 0 && !formattedAddress().includes("Sorry, the address")'>The location on the map is not the one you are looking for? </br>
+					<p data-bind='visible: formattedAddress().length > 0 && !formattedAddress().includes(ViewModel.errorStatus)'>The location on the map is not the one you are looking for? </br>
 					Please specify your research (ex: with country, state, region, etc.)</p>
 				</div>
 			</div>

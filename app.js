@@ -5,6 +5,7 @@ var ViewModel = {
 
 	map: {}, // Created map as a global variable to be able to access and modify it later on
 	formattedAddress: ko.observable(''), // Observable value to display the formatted address of each research
+	errorStatus: 'Sorry, the address couldn\'t be found due to ', // Stores a standard error status
 
 	initMap: function() {
 		// Function initializing the map once the Google Maps API script finished loading
@@ -31,7 +32,7 @@ var ViewModel = {
 				};
 			} else {
 				// alerts user that an error occured while searching for input
-				ViewModel.formattedAddress('Sorry, the address couldn\'t be found due to ' + status);
+				ViewModel.formattedAddress(ViewModel.errorStatus + status);
 			};
 		});
 	}
