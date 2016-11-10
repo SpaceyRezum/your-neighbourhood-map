@@ -12,16 +12,27 @@
 
 	<body>
 		<div id='top-container'>
-			<div id='sidebar'></div>
+			<div id='sidebar'>
+				<form data-bind='submit: updateMap'>
+					<input id='address' type='textbox' placeholder='Please enter an address...'>
+					<button type='submit'>Search</button>
+				</form>
+				<div>
+					<p data-bind='visible: formattedAddress().length > 0'>You searched for:</p>
+					<p data-bind='text: formattedAddress'></p>
+					<p data-bind='visible: formattedAddress().length > 0 && !formattedAddress().includes("Sorry, the address")'>The location on the map is not the one you are looking for? </br>
+					Please specify your research (ex: with country, state, region, etc.)</p>
+				</div>
+			</div>
 			<div id='map-container'></div>
 		</div>
 
-		<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&callback=ViewModel.initMap'></script>
-		<script type='text/javascript' src='frameworks/knockout-v3.4.1.js'></script>
 		<script
 		  src='https://code.jquery.com/jquery-3.1.1.min.js'
 		  integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8='
 		  crossorigin='anonymous'></script>
+		<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&callback=ViewModel.initMap'></script>
+		<script type='text/javascript' src='frameworks/knockout-v3.4.1.js'></script>
 		<script type='text/javascript' src='app.js'></script>
 	</body>
 </html>
