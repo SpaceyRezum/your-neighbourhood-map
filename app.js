@@ -4,7 +4,7 @@ through the knockout framework is stored */
 var ViewModel = {
 
 	map: {}, // Created map as a global variable to be able to access and modify it later on
-	address: ko.observable(''),
+	address: ko.observable(''), // Observable value to save the real-time value of the Address Search textBox
 	formattedAddress: ko.observable(''), // Observable value to display the formatted address of each research
 	errorStatus: 'Sorry, the address couldn\'t be found due to ', // Stores a standard error status
 
@@ -15,6 +15,8 @@ var ViewModel = {
 			center: {lat: -34.397, lng: 150.644},
 			zoom: 8
 		});
+		// Allow autocomplete for the input search box with the id 'address'
+		var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'),{types:['geocode']});
 	},
 
 	// Function updating the map when user enters its input (address)
