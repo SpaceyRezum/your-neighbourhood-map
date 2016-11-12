@@ -20,8 +20,21 @@
 				<div>
 					<p data-bind='visible: formattedAddress().length > 0'>You searched for:</p>
 					<p data-bind='text: formattedAddress'></p>
-					<p data-bind='visible: formattedAddress().length > 0 && !formattedAddress().includes(ViewModel.errorStatus)'>The location on the map is not the one you are looking for? </br>
-					Please specify your research (ex: with country, state, region, etc.)</p>
+					<div data-bind='visible: formattedAddress().length > 0 && !formattedAddress().includes(ViewModel.errorStatus)'>
+						<div data-bind='visible: locationConfirm() === "not set"'>
+							<p>Is this the location you are looking for?</p>
+							<button data-bind='click: confirmLocation'>Yes</button>
+							<button data-bind='click: specifyLocation'>No</button>
+						</div>
+						<div data-bind='visible: locationConfirm() === "not confirmed"'>
+							<p>
+								Try more specific research queries (ex: adding a country, state, region, etc.)
+							</p>
+						</div>
+						<div id='suggestion-list' data-bind='visible: locationConfirm() === "confirmed"'>
+							<p> Here come the suggestion! </p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div id='map-container'></div>
