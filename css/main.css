@@ -2,6 +2,10 @@ html {
 	height: 100%;
 }
 
+p {
+	margin: 2% 0;
+}
+
 body {
 	color: white;
 	background: black;
@@ -25,7 +29,69 @@ body {
 	width: 30%;
 }
 
+#result-section,
+#suggestion-list {
+	height: 90%;
+}
+
+#address-confirmation {
+	margin-top: 10%;
+}
+
+#confirmed-address-details {
+	padding-right: 4px;
+	margin-top: 10px;
+	height: 100%;
+}
+
+#suggestion-list {
+	overflow-y: scroll;
+}
+
+.suggestion-list-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	border-top: 1px solid;
+	margin-right: 4%;
+}
+
+.item-image {
+	height: 100%;
+	width: 30%;
+	display: flex;
+	justify-content: center;
+}
+
+.suggestion-list-item .item-details {
+	padding: 10px;
+	width: 70%;
+}
+
+.item-details p {
+	margin: 2% 0 0 0;
+}
+
 #map-container {
 	width: 70%;
 	height: 100%;
+}
+
+/* Scrollbar Styling */
+
+#suggestion-list::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#suggestion-list::-webkit-scrollbar {
+	width: 12px;
+}
+
+#suggestion-list::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
 }

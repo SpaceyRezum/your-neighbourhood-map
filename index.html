@@ -13,15 +13,25 @@
 	<body>
 		<div id='top-container'>
 			<div id='sidebar'>
-				<form data-bind='submit: updateMap'>
-					<input id='address' type='textbox' placeholder='Please enter an address...' data-bind='textInput: address'>
-					<button type='submit'>Search</button>
-				</form>
-				<div>
-					<p data-bind='visible: formattedAddress().length > 0'>You searched for:</p>
+
+				<div id='input-section'>
+					<form data-bind='submit: updateMap'>
+						<p>Start checking what's cool in your hood!</p>
+						<input id='address' type='textbox' placeholder='Please enter an address...' data-bind='textInput: address'>
+						<button type='submit'>Search</button>
+					</form>
+				</div>
+
+				<div id='result-section' data-bind='visible: formattedAddress().length > 0'>
+					<p>You searched for:</p>
 					<p data-bind='text: formattedAddress'></p>
-					<div data-bind='visible: formattedAddress().length > 0 && !formattedAddress().includes(ViewModel.errorStatus)'>
-						<div data-bind='visible: locationConfirm() === "not set"'>
+
+					<div id='walkscore' data-bind='visible: locationConfirm() === "confirmed"'>
+
+					</div>
+
+					<div data-bind='visible: !formattedAddress().includes(ViewModel.errorStatus)'>
+						<div id='address-confirmation' data-bind='visible: locationConfirm() === "not set"'>
 							<p>Is this the location you are looking for?</p>
 							<button data-bind='click: confirmLocation'>Yes</button>
 							<button data-bind='click: specifyLocation'>No</button>
@@ -31,17 +41,33 @@
 								Try more specific research queries (ex: adding a country, state, region, etc.)
 							</p>
 						</div>
-						<div id='suggestion-list' data-bind='visible: locationConfirm() === "confirmed"'>
-							<p> Here come the suggestion! </p>
+					</div>
+
+					<div id='confirmed-address-details' data-bind='visible: locationConfirm() === "confirmed"'>
+
+						<div id='suggestion-list' data-bind="foreach: suggestionList">
+							<div class='suggestion-list-item'>
+								<div class='item-image'>
+									<img alt='blank'>
+								</div>
+								<div class='item-details'>
+									<p class='item-title' data-bind='text: venue.name'></p>
+									<p class='item-type' data-bind='text: venue.categories[0].name'></p>
+									<p class='item-address'><span data-bind='text: venue.location.address'></span> - <span data-bind='text: venue.location.city'></span></p>
+									<p class='item-rating'>Average Rating: <span data-bind='text: venue.rating'></span></p>
+								</div>
+							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
+
 			<div id='map-container'></div>
 		</div>
 
 		<script
-		  src='https://code.jquery.com/jquery-3.1.1.min.js'
+		  src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
 		  integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8='
 		  crossorigin='anonymous'></script>
 		<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap'></script>
