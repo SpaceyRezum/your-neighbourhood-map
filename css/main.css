@@ -57,16 +57,9 @@ body {
 	margin-right: 4%;
 }
 
-.item-image {
-	height: 100%;
-	width: 30%;
-	display: flex;
-	justify-content: center;
-}
-
 .suggestion-list-item .item-details {
 	padding: 10px;
-	width: 70%;
+	width: 100%;
 }
 
 .item-details p {
