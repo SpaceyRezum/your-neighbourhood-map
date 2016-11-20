@@ -57,9 +57,21 @@ body {
 	margin-right: 4%;
 }
 
+.suggestion-list-item .item-number {
+	margin: auto;
+	border-radius: 21px;
+	height: 20px;
+	background: white;
+	color: black;
+	width: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .suggestion-list-item .item-details {
 	padding: 10px;
-	width: 100%;
+	width: 80%;
 }
 
 .item-details p {
