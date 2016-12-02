@@ -83,6 +83,10 @@ body {
 	height: 100%;
 }
 
+.infowindow {
+	color: black;
+}
+
 /* Scrollbar Styling */
 
 #suggestion-list::-webkit-scrollbar-track {
