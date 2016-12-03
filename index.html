@@ -37,7 +37,7 @@
 					<div id='address-confirmation' data-bind='visible: !formattedAddress().includes(ViewModel.errorStatus)'>
 						<div data-bind='visible: locationConfirm() === "not set"'>
 							<p>Is this the location you are looking for?</p>
-							<button data-bind='click: function() {confirmLocation(), createMarkers()}'>Yes</button>
+							<button data-bind='click: function() {confirmLocation(), createMarkersAndFitBounds()}'>Yes</button>
 							<button data-bind='click: specifyLocation'>No</button>
 						</div>
 						<div data-bind='visible: locationConfirm() === "not confirmed"'>
