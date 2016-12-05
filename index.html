@@ -51,7 +51,7 @@
 					<div id='confirmed-address-details' data-bind='visible: locationConfirm() === "confirmed"'>
 
 						<div id='suggestion-list' data-bind="foreach: suggestionList">
-							<div class='suggestion-list-item' data-bind='event: {click: function(data, event) {$root.toggleMarkerAnimation($index())}}'>
+							<div class='suggestion-list-item' data-bind='event: {click: function(data, event) {$root.toggleMarkerAnimationAndListItemStyle($index(),event)}}'>
 								<div class='item-number' data-bind='text: $index() + 1'></div>
 								<div class='item-details'>
 									<p class='item-title' data-bind='text: venue.name'></p>

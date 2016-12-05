@@ -80,6 +80,21 @@ body {
 	margin: 2% 0 0 0;
 }
 
+.item-clicked {
+	background-color: white;
+	color: black;
+	-webkit-transition: 300ms linear;
+	-moz-transition: 300ms linear;
+	-ms-transition: 300ms linear;
+	-o-transition: 300ms linear;
+	transition: 300ms linear;
+}
+
+.item-clicked .item-number {
+	background: black;
+	color: white;
+}
+
 #map-container {
 	width: 70%;
 	height: 100%;
