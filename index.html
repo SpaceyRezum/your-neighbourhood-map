@@ -31,7 +31,7 @@
 						<button type='button' data-bind='click: getTransitOptions'><span data-bind='text: displayOrHideTransit'></span></button>
 						</br></br>
 						<form id='category-filter'>
-							<span>Include only: </span>
+							<span>I only want the best places related to: </span>
 							<select id='filter-container' name="categories">
 							    <option value="none">All</option>
 							    <option value="food">Serving food</option>
@@ -42,7 +42,7 @@
 							    <option value="outdoors">Outdoors</option>
 							    <option value="sights">Sights</option>
 							</select>
-							<button type='submit' data-bind='click: function(data, event) {console.log($("#address"), $("#filter-container")[0].value)}'>Filter</button>
+							<button type='submit' data-bind='click: function(data, event) {compareAddresses($("#address"), $("#filter-container")[0].value)}'>Filter</button>
 						</form>
 					</div>
 
@@ -60,6 +60,9 @@
 					</div>
 
 					<div id='confirmed-address-details' data-bind='visible: locationConfirm() === "confirmed"'>
+						<div>
+						 <p>Here's the top <span data-bind='text: suggestionList().length'></span> suggestions for the address &amp; filter you chose</p>
+						</div>
 
 						<div id='suggestion-list' data-bind="foreach: suggestionList">
 							<div class='suggestion-list-item' data-bind='event: {click: function(data, event) {$root.toggleMarkerAnimationAndListItemStyle($index(),event.target)}}, attr: {id: "item-" + $index()}'>
