@@ -68,10 +68,10 @@
 							<div class='suggestion-list-item' data-bind='event: {click: function(data, event) {$root.toggleMarkerAnimationAndListItemStyle($index(),event.target)}}, attr: {id: "item-" + $index()}'>
 								<div class='item-number' data-bind='text: $index() + 1'></div>
 								<div class='item-details'>
-									<p class='item-title' data-bind='text: venue.name'></p>
-									<p class='item-type' data-bind='text: venue.categories[0].name'></p>
-									<p class='item-address'><span data-bind='text: venue.location.address'></span> - <span data-bind='text: venue.location.city'></span></p>
-									<p class='item-rating'>Average Rating: <span data-bind='text: venue.rating'></span></p>
+									<p class='item-title' data-bind='text: name'></p>
+									<p class='item-type' data-bind='text: categories[0].name'></p>
+									<p class='item-address'><span data-bind='text: location.address'></span> - <span data-bind='text: location.city'></span></p>
+									<p class='item-rating'>Average Rating: <span data-bind='text: rating'></span></p>
 								</div>
 							</div>
 						</div>
