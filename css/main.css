@@ -1,3 +1,5 @@
+/* General Styling */
+
 html {
 	height: 100%;
 }
@@ -15,14 +17,63 @@ body {
 	overflow: hidden;
 }
 
+/* Nav-bar styling */
+
+header {
+	height: 10%;
+	padding: 1% 1% 0 1%;
+	display: flex;
+}
+
+#nav-bar {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+#input-section {
+	width: 30%;
+}
+
+#input-section input {
+	width: 70%;
+}
+
+#filter-container {
+	width: 70%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+#filter-container div {
+	width: 25%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.category-filter-container {
+	width: 50% !important;
+}
+
+.category-filter-container form {
+	display: flex;
+    justify-content: space-around;
+}
+
+/* Main content container styling */
+
 #top-container {
 	width: 98%;
-	height: 96%;
+	height: 86%;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-end;
-	padding: 1%;
+	padding: 0 1% 1% 1%;
 }
+
+/* Sidebar functionalities */
 
 #sidebar {
 	height: 100%;
@@ -43,6 +94,8 @@ body {
 	margin-top: 10px;
 	height: 100%;
 }
+
+/* Suggestion List & suggestion list items */
 
 #suggestion-list {
 	overflow-y: scroll;
@@ -80,6 +133,33 @@ body {
 	margin: 2% 0 0 0;
 }
 
+/* Favorite button */
+
+.fav-star {
+	cursor: inherit;
+	width: 70px;
+	height: 50px;
+	background: url(../images/fav-star.png) no-repeat;
+	background-position: 0 0;
+	border: none;
+}
+
+.fav-star:hover {
+	background-position: -3519px 0;
+	transition: background 1s steps(55);
+}
+
+.favorited {
+	cursor: inherit;
+	width: 70px;
+	height: 50px;
+	background: url(../images/fav-star.png) no-repeat;
+	background-position: -3519px 0;
+	border: none;
+}
+
+/* List item when clicked */
+
 .item-clicked {
 	background-color: white;
 	color: black;
@@ -95,6 +175,8 @@ body {
 	color: white;
 }
 
+/* Map area */
+
 #map-container {
 	width: 70%;
 	height: 100%;
@@ -104,7 +186,7 @@ body {
 	color: black;
 }
 
-/* Scrollbar Styling */
+/* Scrollbar Styling for Webkit Browser on Windows */
 
 #suggestion-list::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
