@@ -52,16 +52,6 @@ header {
 	display: flex;
 	justify-content: flex-end;
 }
-
-.category-filter-container {
-	width: 50% !important;
-}
-
-.category-filter-container form {
-	display: flex;
-    justify-content: space-around;
-}
-
 /* Main content container styling */
 
 #top-container {
@@ -93,6 +83,16 @@ header {
 	padding-right: 4px;
 	margin-top: 10px;
 	height: 100%;
+}
+
+.category-filter-container {
+	width: 80%;
+}
+
+.category-filter-container form {
+	display: flex;
+	justify-content: inherit;
+	align-items: baseline;
 }
 
 /* Suggestion List & suggestion list items */

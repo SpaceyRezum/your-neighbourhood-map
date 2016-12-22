@@ -35,25 +35,6 @@
 					<div class='transit-display'>
 						<button type='button' data-bind='click: getTransitOptions'>Transit Options (if available)</button>
 					</div>
-
-					<!-- Form to select venue category filter -->
-					<div class='category-filter-container'>
-						<form>
-							Filter places by:&nbsp;&nbsp;
-							<select id='filter-categories' name="categories">
-								<option value="none">All</option>
-								<option value="food">Serving food</option>
-								<option value="drinks">Serving drinks</option>
-								<option value="coffee">Cafes</option>
-								<option value="shops">Shops</option>
-								<option value="arts">Arts</option>
-								<option value="outdoors">Outdoors</option>
-								<option value="sights">Sights</option>
-							</select>
-							&nbsp;&nbsp;
-							<button type='submit' data-bind='click: function(data, event) {compareAddresses($("#address"), $("#filter-container")[0].value)}'>Filter</button>
-						</form>
-					</div>
 				</div>
 			</div>	
 		</header>
@@ -78,6 +59,26 @@
 					</div>
 
 					<div id='confirmed-address-details' data-bind='visible: locationConfirm() === "confirmed"'>
+
+						<!-- Form to select venue category filter -->
+						<div class='category-filter-container' data-bind='visible: formattedAddress() !== "Favorited Venues"'>
+							<form>
+								Filter categories: &nbsp;&nbsp;
+								<select id='filter-categories' name="categories">
+									<option value="none">All</option>
+									<option value="food">Serving food</option>
+									<option value="drinks">Serving drinks</option>
+									<option value="coffee">Cafes</option>
+									<option value="shops">Shops</option>
+									<option value="arts">Arts</option>
+									<option value="outdoors">Outdoors</option>
+									<option value="sights">Sights</option>
+								</select>
+								&nbsp;&nbsp;
+								<button type='submit' data-bind='click: function(data, event) {compareAddresses($("#address"), $("#filter-categories")[0].value)}'>Filter</button>
+							</form>
+						</div>
+
 						<div>
 						 <p>Here's the top <span data-bind='text: suggestionList().length'></span> suggestions for the address &amp; filter you chose</p>
 						</div>
