@@ -2,10 +2,16 @@
 
 html {
 	height: 100%;
+	font-family: 'Montserrat', sans-serif;
 }
 
 p {
-	margin: 2% 0;
+	margin: 2vmin 0;
+	font-size: 2vmin;
+}
+
+button {
+	font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -48,10 +54,21 @@ header {
 }
 
 #filter-container div {
+	height: 100%;
 	width: 25%;
 	display: flex;
 	justify-content: flex-end;
 }
+
+.favorite-list button {
+	background: none;
+	border: none;
+	color: white;
+	cursor: pointer;
+	font-size: 100%;
+	margin-right: 10%;
+}
+
 /* Main content container styling */
 
 #top-container {
@@ -75,18 +92,18 @@ header {
 	height: 90%;
 }
 
-#address-confirmation {
-	margin: 10% 10% 0 0;
-}
-
 #confirmed-address-details {
 	padding-right: 4px;
 	margin-top: 10px;
-	height: 100%;
+	height: 80%;
+}
+
+.transit-display {
+	margin-bottom: 5%;
 }
 
 .category-filter-container {
-	width: 80%;
+	width: 100%;
 }
 
 .category-filter-container form {
@@ -114,19 +131,18 @@ header {
 
 .suggestion-list-item .item-number {
 	margin: auto;
-	border-radius: 21px;
-	height: 20px;
+	border-radius: 20px;
 	background: white;
 	color: black;
-	width: 20px;
+	width: 10%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .suggestion-list-item .item-details {
-	padding: 10px;
-	width: 80%;
+	padding: 2%;
+	width: 76%;
 }
 
 .item-details p {
@@ -135,10 +151,18 @@ header {
 
 /* Favorite button */
 
+.favorite-container {
+	width: 20%;
+}
+
+.favorite-container button {
+	width: 100%;
+	height: 50px;
+	padding: 0;
+}
+
 .fav-star {
 	cursor: inherit;
-	width: 70px;
-	height: 50px;
 	background: url(../images/fav-star.png) no-repeat;
 	background-position: 0 0;
 	border: none;
@@ -151,8 +175,6 @@ header {
 
 .favorited {
 	cursor: inherit;
-	width: 70px;
-	height: 50px;
 	background: url(../images/fav-star.png) no-repeat;
 	background-position: -3519px 0;
 	border: none;

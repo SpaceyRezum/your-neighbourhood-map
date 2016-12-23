@@ -7,6 +7,7 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		<title>Your new neighborhood map</title>
 		<meta description='Want to find what will be around you in your new neighborhood, enter the address and find out!'>
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel="stylesheet">
 		<link rel='stylesheet' type='text/css' href='css/main.css'>
 	</head>
 
@@ -28,12 +29,7 @@
 				<div id='filter-container'>
 					<!-- button to load the favorite venues as suggestionList -->
 					<div class='favorite-list'>
-						<button type='button' data-bind='click: $root.loadFavoriteList'>Display Favorited Venues</button>
-					</div>
-
-					<!-- button to display / hide transit options if available -->
-					<div class='transit-display'>
-						<button type='button' data-bind='click: getTransitOptions'>Transit Options (if available)</button>
+						<button type='button' data-bind='click: $root.loadFavoriteList'>Favorites</button>
 					</div>
 				</div>
 			</div>	
@@ -59,6 +55,11 @@
 					</div>
 
 					<div id='confirmed-address-details' data-bind='visible: locationConfirm() === "confirmed"'>
+
+						<!-- button to display / hide transit options if available -->
+						<div class='transit-display'>
+							<button type='button' data-bind='click: getTransitOptions'><span data-bind='text: displayOrHideTransit'></button>
+						</div>
 
 						<!-- Form to select venue category filter -->
 						<div class='category-filter-container' data-bind='visible: formattedAddress() !== "Favorited Venues"'>
