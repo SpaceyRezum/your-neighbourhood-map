@@ -233,6 +233,10 @@ header {
 /* Hamburger-turning-cross button to toggle sidebar */
 /* Courtesy of http://bootsnipp.com/maridlcrmn */
 
+.hamburger-button-container {
+	height: 100%;
+}
+
 .hamburger {
 	position: relative;
 	z-index: 999;
@@ -240,7 +244,7 @@ header {
 	width: 32px;
 	height: 32px;
 	margin: 15px;
-	background: transparent;
+	background: black;
 	border: none;
 	cursor: pointer;
 }
