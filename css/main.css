@@ -15,7 +15,7 @@ button {
 }
 
 body {
-	color: white;
+	color: #f7d89a;
 	background: black;
 	width: 100%;
 	height: 100%;
@@ -23,50 +23,54 @@ body {
 	overflow: hidden;
 }
 
-/* Nav-bar styling */
+/* Navbar styling */
 
 header {
 	height: 10%;
-	padding: 1% 1% 0 1%;
+	padding: 1% 1% 1% 1%;
 	display: flex;
 }
 
-#nav-bar {
+#navbar {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
 }
 
 #input-section {
-	width: 30%;
-}
-
-#input-section input {
-	width: 70%;
-}
-
-#filter-container {
 	width: 70%;
 	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	flex-wrap: nowrap;
+	align-self: center;
+}
+	
+
+#input-section input {
+	width: 40vmin;
 }
 
-#filter-container div {
-	height: 100%;
-	width: 25%;
+.favorite-list {
+	width: 30%;
 	display: flex;
 	justify-content: flex-end;
 }
 
 .favorite-list button {
+	border-radius: 20px;
 	background: none;
 	border: none;
-	color: white;
+	color: #f7d89a;
 	cursor: pointer;
-	font-size: 100%;
-	margin-right: 10%;
+	font-size: 2vmin;
+}
+
+.favorite-list button:hover {
+	background: #f7d89a;
+	color: black;
+	-webkit-transition: 100ms linear;
+	-moz-transition: 100ms linear;
+	-ms-transition: 100ms linear;
+	-o-transition: 100ms linear;
+	transition: 100ms linear;
 }
 
 /* Main content container styling */
@@ -76,7 +80,7 @@ header {
 	height: 86%;
 	display: flex;
 	flex-direction: row;
-	align-items: flex-end;
+	align-items: flex-start;
 	padding: 0 1% 1% 1%;
 }
 
@@ -84,7 +88,21 @@ header {
 
 #sidebar {
 	height: 100%;
-	width: 30%;
+	width: 0%;
+	-webkit-transition: 300ms ease;
+	-moz-transition: 300ms ease;
+	-ms-transition: 300ms ease;
+	-o-transition: 300ms ease;
+	transition: 300ms ease;
+}
+
+.toggled {
+	width: 30% !important;
+	-webkit-transition: 300ms ease;
+	-moz-transition: 300ms ease;
+	-ms-transition: 300ms ease;
+	-o-transition: 300ms ease;
+	transition: 300ms ease;
 }
 
 #result-section,
@@ -93,8 +111,8 @@ header {
 }
 
 #confirmed-address-details {
-	padding-right: 4px;
-	margin-top: 10px;
+	padding-right: 1vmin;
+	margin-top: 1vmin;
 	height: 80%;
 }
 
@@ -170,6 +188,10 @@ header {
 
 .fav-star:hover {
 	background-position: -3519px 0;
+	-webkit-transition: background 1s steps(55);
+	-moz-transition: background 1s steps(55);
+	-ms-transition: background 1s steps(55);
+	-o-transition: background 1s steps(55);
 	transition: background 1s steps(55);
 }
 
@@ -183,7 +205,7 @@ header {
 /* List item when clicked */
 
 .item-clicked {
-	background-color: white;
+	background-color: #f7d89a;
 	color: black;
 	-webkit-transition: 300ms linear;
 	-moz-transition: 300ms linear;
@@ -194,18 +216,131 @@ header {
 
 .item-clicked .item-number {
 	background: black;
-	color: white;
+	color: #f7d89a;
 }
 
 /* Map area */
 
 #map-container {
-	width: 70%;
+	width: 100%;
 	height: 100%;
 }
 
 .infowindow {
 	color: black;
+}
+
+/* Hamburger-turning-cross button to toggle sidebar */
+/* Courtesy of http://bootsnipp.com/maridlcrmn */
+
+.hamburger {
+	position: relative;
+	z-index: 999;
+	display: block;
+	width: 32px;
+	height: 32px;
+	margin: 15px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+	outline: none;
+}
+.hamburger.is-closed:before {
+	content: '';
+	display: block;
+	width: 100px;
+	font-size: 14px;
+	color: #fff;
+	line-height: 32px;
+	text-align: center;
+	opacity: 0;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover:before {
+	opacity: 1;
+	display: block;
+	-webkit-transform: translate3d(-100px,0,0);
+	-webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+	position: absolute;
+	left: 0;
+	height: 4px;
+	width: 100%;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+	background-color: #f7d89a;
+}
+.hamburger.is-closed .hamb-top { 
+	top: 5px; 
+	-webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed .hamb-middle {
+	top: 50%;
+	margin-top: -2px;
+}
+.hamburger.is-closed .hamb-bottom {
+	bottom: 5px;	
+	-webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+	top: 0;
+	-webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+	bottom: 0;
+	-webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+	background-color: #f7d89a;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+	top: 50%;
+	margin-top: -2px;	
+}
+.hamburger.is-open .hamb-top { 
+	-webkit-transform: rotate(45deg);
+	-webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open .hamb-middle { display: none; }
+.hamburger.is-open .hamb-bottom {
+	-webkit-transform: rotate(-45deg);
+	-webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open:before {
+	content: '';
+	display: block;
+	width: 100px;
+	font-size: 14px;
+	color: #fff;
+	line-height: 32px;
+	text-align: center;
+	opacity: 0;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open:hover:before {
+	opacity: 1;
+	display: block;
+	-webkit-transform: translate3d(-100px,0,0);
+	-webkit-transition: all .35s ease-in-out;
 }
 
 /* Scrollbar Styling for Webkit Browser on Windows */

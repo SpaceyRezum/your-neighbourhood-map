@@ -14,7 +14,7 @@
 	
 	<body>
 		<header>
-			<div id='nav-bar'>
+			<div id='navbar'>
 				<div id='input-section'>
 					<form>
 						<p>Start checking what's cool in your hood!</p>
@@ -26,21 +26,19 @@
 					</form>
 				</div>
 
-				<div id='filter-container'>
-					<!-- button to load the favorite venues as suggestionList -->
-					<div class='favorite-list'>
-						<button type='button' data-bind='click: $root.loadFavoriteList'>Favorites</button>
-					</div>
+				<!-- button to load the favorite venues as suggestionList -->
+				<div class='favorite-list'>
+					<button type='button' data-bind='click: $root.loadFavoriteList'>Favorites</button>
 				</div>
 			</div>	
 		</header>
 
 		<content id='top-container'>
-			<div id='sidebar'>
+			<div id='sidebar' class='toggled'>
 				<div id='result-section' data-bind='visible: formattedAddress().length > 0'>
-					<p>You searched for:</p>
-					<p data-bind='text: formattedAddress'></p>
-
+					<p data-bind='if: formattedAddress() !== "Favorited Venues"'>You searched for: </br></br>
+						<span data-bind='text: formattedAddress'></span></br>
+					</p>
 					<div id='address-confirmation' data-bind='visible: !formattedAddress().includes(ViewModel.errorStatus)'>
 						<div data-bind='visible: locationConfirm() === "not set"'>
 							<p>Is this the location you are looking for?</p>
@@ -55,9 +53,8 @@
 					</div>
 
 					<div id='confirmed-address-details' data-bind='visible: locationConfirm() === "confirmed"'>
-
 						<!-- button to display / hide transit options if available -->
-						<div class='transit-display'>
+						<div class='transit-display' data-bind='if: suggestionList().length > 0'>
 							<button type='button' data-bind='click: getTransitOptions'><span data-bind='text: displayOrHideTransit'></button>
 						</div>
 
@@ -81,7 +78,13 @@
 						</div>
 
 						<div>
-						 <p>Here's the top <span data-bind='text: suggestionList().length'></span> suggestions for the address &amp; filter you chose</p>
+							<p data-bind='if: formattedAddress() !== "Favorited Venues"'>
+								Here are the top <span data-bind='text: suggestionList().length'></span> suggestions for the address &amp; filter you chose
+							</p>
+							<p data-bind='if: formattedAddress() == "Favorited Venues"'>Here are your favorited venues:
+								<span data-bind='if: suggestionList().length < 1'></br></br>It looks like you haven't favorited any places yet. </br>
+								What are you waiting for? :D</span> 
+						 	</p>
 						</div>
 
 						<div id='suggestion-list' data-bind="foreach: suggestionList">
@@ -101,17 +104,37 @@
 
 				</div>
 			</div>
+			
+			<div class='hamburger-button-container'>
+				<!-- Hamburger button to toggle sidebar on mobile version -->
+				<button type='button' class='hamburger is-closed' data-bind='click: toggleSidebar'>
+					<span class='hamb-top'></span>
+					<span class='hamb-middle'></span>
+					<span class='hamb-bottom'></span>
+				</button>
+			</div>
 
-
+			<!-- map-container will be populated through initMap function -->
 			<div id='map-container'></div>
 
-			<script
-			  src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
-			  integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8='
-			  crossorigin='anonymous'></script>
-			<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap'></script>
-			<script type='text/javascript' src='frameworks/knockout-v3.4.1.js'></script>
-			<script type='text/javascript' src='app.js'></script>
+			<script 
+				src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+			  	integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8='
+			  	crossorigin='anonymous'>
+			</script>
+			<script 
+				async 
+				defer 
+				src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap'>
+			</script>
+			<script 
+				type='text/javascript' 
+				src='frameworks/knockout-v3.4.1.js'>
+			</script>
+			<script 
+				type='text/javascript' 
+				src='app.js'>
+			</script>
 		</content>
 	</body>
 </html>
