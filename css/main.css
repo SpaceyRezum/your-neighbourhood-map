@@ -110,7 +110,7 @@ header {
 	height: 90%;
 }
 
-#confirmed-address-details {
+#address-details {
 	padding-right: 1vmin;
 	margin-top: 1vmin;
 	height: 80%;
@@ -235,6 +235,7 @@ header {
 
 .hamburger-button-container {
 	height: 100%;
+	background: black;
 }
 
 .hamburger {
@@ -244,7 +245,7 @@ header {
 	width: 32px;
 	height: 32px;
 	margin: 15px;
-	background: black;
+	background: transparent;
 	border: none;
 	cursor: pointer;
 }
