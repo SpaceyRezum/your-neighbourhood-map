@@ -17,7 +17,7 @@
 			<div id='navbar'>
 				<div id='input-section'>
 					<form>
-						<p>Start checking what's cool in your hood!</p>
+						<p style='text-decoration: underline'>Start checking what's cool in your hood!</p>
 						<input id='address' type='address' placeholder='Please enter an address...'>&nbsp;
 						<!-- I used the click workaround because a textInput data-bind on the input field did not update the address observable when google autocomplete suggestions where used -->
 						<button type='submit' data-bind='click: function(data, event) {
@@ -28,13 +28,21 @@
 
 				<!-- button to load the favorite venues as suggestionList -->
 				<div class='favorite-list'>
-					<button type='button' data-bind='click: $root.loadFavoriteList'>Favorites</button>
+					<button style='text-decoration: underline' type='button' data-bind='click: $root.loadFavoriteList'>Favorites</button>
 				</div>
 			</div>	
 		</header>
 
 		<content id='top-container'>
 			<div id='sidebar'>
+				<div class='hamburger-button-container hidding-div'>
+					<!-- Hamburger button to toggle sidebar on mobile version -->
+					<button type='button' class='hamburger is-closed' data-bind='click: toggleSidebar'>
+						<span class='hamb-top'></span>
+						<span class='hamb-middle'></span>
+						<span class='hamb-bottom'></span>
+					</button>
+				</div>
 				<div id='result-section' data-bind='visible: formattedAddress().length > 0'>
 					<p data-bind='if: formattedAddress() !== "Favorited Venues"'>You searched for: </br></br>
 						<span data-bind='text: formattedAddress'></span></br>
@@ -50,19 +58,20 @@
 						<!-- Form to select venue category filter -->
 						<div class='category-filter-container' data-bind='visible: formattedAddress() !== "Favorited Venues" && confirmedLocation() !== "error"'> 
 							<form>
-								Filter categories: &nbsp;&nbsp;
-								<select id='filter-categories' name="categories">
-									<option value="none">All</option>
-									<option value="food">Serving food</option>
-									<option value="drinks">Serving drinks</option>
-									<option value="coffee">Cafes</option>
-									<option value="shops">Shops</option>
-									<option value="arts">Arts</option>
-									<option value="outdoors">Outdoors</option>
-									<option value="sights">Sights</option>
-								</select>
-								&nbsp;&nbsp;
-								<button type='submit' data-bind='click: function(data, event) {compareAddresses($("#address"), $("#filter-categories")[0].value)}'>Filter</button>
+								<p>
+									Filter categories:
+									<select id='filter-categories' name="categories">
+										<option value="none">All</option>
+										<option value="food">Serving food</option>
+										<option value="drinks">Serving drinks</option>
+										<option value="coffee">Cafes</option>
+										<option value="shops">Shops</option>
+										<option value="arts">Arts</option>
+										<option value="outdoors">Outdoors</option>
+										<option value="sights">Sights</option>
+									</select>
+									<button type='submit' data-bind='click: function(data, event) {compareAddresses($("#address"), $("#filter-categories")[0].value)}'>Filter</button>
+								</p>
 							</form>
 						</div>
 
@@ -76,7 +85,7 @@
 						 	</p>
 						</div>
 						
-						<!-- ko if: formattedAddress() !== "Favorited Venues" && confirmedLocation() !== "error" -->
+						<!-- ko if: suggestionList().length > 0 && confirmedLocation() !== "error" -->
 						<div id='suggestion-list' data-bind='foreach: suggestionList'>
 							<div class='suggestion-list-item' data-bind='event: {click: function(data, event) {$root.toggleMarkerAnimationAndListItemStyle($index(),event.target)}}, attr: {id: "item-" + $index()}'>
 								<div class='item-number' data-bind='text: $index() + 1'></div>
@@ -86,7 +95,7 @@
 									<p class='item-address'><span data-bind='text: location.address'></span> - <span data-bind='text: location.city'></span></p>
 								</div>
 								<div class='favorite-container'>
-									<button data-bind='click: $root.favorite, attr: {class: favorited() ? "favorited" : "fav-star"}'></button>
+									<button data-bind='click: $root.favorite, attr: {class: favorited() ? "favorited" : "fav-star"}'>
 								</div>
 							</div>
 						</div>
@@ -94,15 +103,6 @@
 					</div>
 
 				</div>
-			</div>
-			
-			<div class='hamburger-button-container'>
-				<!-- Hamburger button to toggle sidebar on mobile version -->
-				<button type='button' class='hamburger is-closed' data-bind='click: toggleSidebar'>
-					<span class='hamb-top'></span>
-					<span class='hamb-middle'></span>
-					<span class='hamb-bottom'></span>
-				</button>
 			</div>
 
 			<!-- map-container will be populated through initMap function -->

@@ -15,10 +15,10 @@ button {
 }
 
 body {
-	color: #f7d89a;
+	color: #028cc3;
 	background: black;
 	width: 100%;
-	height: 100%;
+	height: 98%;
 	margin: 0;
 	overflow: hidden;
 }
@@ -46,6 +46,9 @@ header {
 
 #input-section input {
 	width: 40vmin;
+	font-size: 1vmax;
+	border-radius: 20px;
+	border: none;
 }
 
 .favorite-list {
@@ -58,13 +61,13 @@ header {
 	border-radius: 20px;
 	background: none;
 	border: none;
-	color: #f7d89a;
+	color: #028cc3;
 	cursor: pointer;
 	font-size: 2vmin;
 }
 
 .favorite-list button:hover {
-	background: #f7d89a;
+	background: #028cc3;
 	color: black;
 	-webkit-transition: 100ms linear;
 	-moz-transition: 100ms linear;
@@ -88,7 +91,7 @@ header {
 
 #sidebar {
 	height: 100%;
-	width: 0%;
+	width: 40%;
 	-webkit-transition: 300ms ease;
 	-moz-transition: 300ms ease;
 	-ms-transition: 300ms ease;
@@ -97,7 +100,7 @@ header {
 }
 
 .toggled {
-	width: 30% !important;
+	width: 50% !important;
 	-webkit-transition: 300ms ease;
 	-moz-transition: 300ms ease;
 	-ms-transition: 300ms ease;
@@ -130,6 +133,10 @@ header {
 	align-items: baseline;
 }
 
+#filter-categories {
+	margin: auto;
+}
+
 /* Suggestion List & suggestion list items */
 
 #suggestion-list {
@@ -151,6 +158,7 @@ header {
 	margin: auto;
 	border-radius: 20px;
 	background: white;
+	font-size: 1vmax;
 	color: black;
 	width: 10%;
 	display: flex;
@@ -167,7 +175,7 @@ header {
 	margin: 2% 0 0 0;
 }
 
-/* Favorite button */
+/* Favorite star button */
 
 .favorite-container {
 	width: 20%;
@@ -180,32 +188,30 @@ header {
 }
 
 .fav-star {
-	cursor: inherit;
-	background: url(../images/fav-star.png) no-repeat;
-	background-position: 0 0;
-	border: none;
-}
-
-.fav-star:hover {
-	background-position: -3519px 0;
-	-webkit-transition: background 1s steps(55);
-	-moz-transition: background 1s steps(55);
-	-ms-transition: background 1s steps(55);
-	-o-transition: background 1s steps(55);
-	transition: background 1s steps(55);
+	background: url(../images/favourite-star.png) no-repeat;
 }
 
 .favorited {
-	cursor: inherit;
-	background: url(../images/fav-star.png) no-repeat;
-	background-position: -3519px 0;
+	background: url(../images/clicked-favourite-star.png) no-repeat;
+}
+
+.fav-star, 
+.favorited {
+	cursor: pointer;
 	border: none;
+	background-size: 50%;
+	background-position: center;
+	-webkit-transition: background 300ms ease;
+	-moz-transition: background 300ms ease;
+	-ms-transition: background 300ms ease;
+	-o-transition: background 300ms ease;
+	transition: background 300ms ease;
 }
 
 /* List item when clicked */
 
 .item-clicked {
-	background-color: #f7d89a;
+	background-color: #028cc3;
 	color: black;
 	-webkit-transition: 300ms linear;
 	-moz-transition: 300ms linear;
@@ -216,13 +222,13 @@ header {
 
 .item-clicked .item-number {
 	background: black;
-	color: #f7d89a;
+	color: #028cc3;
 }
 
 /* Map area */
 
 #map-container {
-	width: 100%;
+	width: 94%;
 	height: 100%;
 }
 
@@ -234,17 +240,17 @@ header {
 /* Courtesy of http://bootsnipp.com/maridlcrmn */
 
 .hamburger-button-container {
-	height: 100%;
+	display: none !important;
 	background: black;
 }
 
 .hamburger {
 	position: relative;
 	z-index: 999;
-	display: block;
-	width: 32px;
-	height: 32px;
-	margin: 15px;
+	float: right;
+	width: 15px;
+	height: 15px;
+	margin: 2vmin;
 	background: transparent;
 	border: none;
 	cursor: pointer;
@@ -281,16 +287,16 @@ header {
 .hamburger.is-open .hamb-bottom {
 	position: absolute;
 	left: 0;
-	height: 4px;
+	height: 2px;
 	width: 100%;
 }
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
-	background-color: #f7d89a;
+	background-color: #028cc3;
 }
 .hamburger.is-closed .hamb-top { 
-	top: 5px; 
+	top: 0; 
 	-webkit-transition: all .35s ease-in-out;
 }
 .hamburger.is-closed .hamb-middle {
@@ -298,7 +304,7 @@ header {
 	margin-top: -2px;
 }
 .hamburger.is-closed .hamb-bottom {
-	bottom: 5px;	
+	top: 76%;	
 	-webkit-transition: all .35s ease-in-out;
 }
 
@@ -313,7 +319,7 @@ header {
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-middle,
 .hamburger.is-open .hamb-bottom {
-	background-color: #f7d89a;
+	background-color: #028cc3;
 }
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-bottom {
@@ -364,4 +370,49 @@ header {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #555;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 800px) {
+	button {
+		color: black;
+		background-color: #028cc3;
+		border: none;
+		border-radius: 20px;
+		cursor: pointer;
+		font-size: 1vmax;
+	}
+
+	.hamburger-button-container {
+		display: block !important;
+	}
+
+	.hidding-div {
+		height: 110%;
+	}
+
+	.category-filter-container form {
+		font-size: 1.5vmax;
+	}
+
+	#filter-categories {
+		border-radius: 20px;
+		border: none;
+		font-size: 1.5vmax;
+		margin: 1.5vmin 0px;
+		background: white;
+	}
+
+	#sidebar {
+		width: 8%;
+	}
+	
+	.item-details p {
+		font-size: 1vmax;
+	}
+
+	.infowindow p {
+		font-size: 2vmax;
+	}
 }
