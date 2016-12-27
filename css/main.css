@@ -47,8 +47,9 @@ header {
 #input-section input {
 	width: 40vmin;
 	font-size: 1vmax;
-	border-radius: 20px;
+	border-radius: 10px;
 	border: none;
+	padding: 4px;
 }
 
 .favorite-list {
@@ -191,11 +192,13 @@ header {
 	background: url(../images/favourite-star.png) no-repeat;
 }
 
+.fav-star:hover,
 .favorited {
 	background: url(../images/clicked-favourite-star.png) no-repeat;
 }
 
 .fav-star, 
+.fav-star:hover, 
 .favorited {
 	cursor: pointer;
 	border: none;
