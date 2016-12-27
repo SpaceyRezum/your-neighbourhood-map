@@ -44,11 +44,19 @@ header {
 }
 
 #input-section input {
+<<<<<<< HEAD
   width: 40vmin;
   font-size: 1vmax;
   border-radius: 10px;
   border: none;
   padding: 4px;
+=======
+	width: 40vmin;
+	font-size: 1vmax;
+	border-radius: 10px;
+	border: none;
+	padding: 4px;
+>>>>>>> 87dbe657ab40ee8966b82caaf04967208de6dbf1
 }
 
 .favorite-list {
