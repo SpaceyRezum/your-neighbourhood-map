@@ -128,10 +128,10 @@ header {
 }
 
 .filter-container input {
-  font-size: 1vmax;
+  font-size: 2vmin;
   width: 90%;
   padding: 1%;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
   border: none;
   border-radius: 10px;
 }
@@ -397,13 +397,22 @@ header {
 /* Media Queries */
 
 @media screen and (max-width: 800px) {
+  p {
+    font-size: 2.5vmin;
+    margin: 3% 2%;
+  }
+
   button {
     color: black;
     background-color: #028cc3;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 1vmax;
+    font-size: 2vmin;
+  }
+
+  .favorite-list button {
+    font-size: 3vmin;
   }
 
   .hamburger-button-container {
@@ -412,6 +421,16 @@ header {
 
   .hidding-div {
     height: 110%;
+  }
+
+  .input-section input,
+  .filter-container input {
+    font-size: 2vmin;
+  }
+
+  .filter-container input {
+    width: 95%;
+    padding: 2%;
   }
 
   #filter-categories {
@@ -427,7 +446,7 @@ header {
   }
 
   .item-details p {
-    font-size: 1vmax;
+    font-size: 1.5vmax;
   }
 
   .infowindow p {
