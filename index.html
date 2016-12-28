@@ -8,13 +8,13 @@
     <title>Your new neighborhood map</title>
     <meta description='Want to find what will be around you in your new neighborhood, enter the address and find out!'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel="stylesheet">
-    <link rel='stylesheet' type='text/css' href='css/main.css'>
+    <link rel='stylesheet' href='css/main.css'>
 </head>
 
 
 <body>
     <header>
-        <div id='navbar'>
+        <nav id='navbar'>
             <div id='input-section'>
                 <form>
                     <p style='text-decoration: underline'>Start checking what's cool in your hood!</p>
@@ -29,11 +29,11 @@
             <div class='favorite-list'>
                 <button style='text-decoration: underline' type='button' data-bind='click: $root.loadFavoriteList'>Favorites</button>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <content id='top-container'>
-        <div id='sidebar'>
+    <div id='top-container'>
+        <aside id='sidebar'>
             <div class='hamburger-button-container hidding-div'>
                 <!-- Hamburger button to toggle sidebar on mobile version -->
                 <button type='button' class='hamburger is-closed' data-bind='click: toggleSidebar'>
@@ -52,7 +52,7 @@
                 <div id='address-details'>
 
                     <!-- button to display / hide transit options if available -->
-                    <div class='transit-display' data-bind='if: suggestionList().length > 0'>
+                    <div class='transit-display' data-bind='if: filteredList().length > 0'>
                         <button type='button' data-bind='click: getTransitOptions'><span data-bind='text: displayOrHideTransit'></button>
 					</div>
 
@@ -69,12 +69,12 @@
 							Here are the top <span data-bind='text: filteredList().length'></span> suggestions for the address &amp; filter you chose
                         </p>
                         <p data-bind='if: formattedAddress() === "Favorited Venues"'>Here are your favorited venues:
-                            <span data-bind='if: suggestionList().length < 1'></br></br>It looks like you haven't favorited any places yet. </br>
+                            <span data-bind='if: filteredList().length < 1'></br></br>It looks like you haven't favorited any places yet. </br>
 							What are you waiting for? :D</span>
                         </p>
                     </div>
 
-                    <!-- ko if: suggestionList().length > 0 && !formattedAddress().includes("Sorry, the") -->
+                    <!-- ko if: filteredList().length > 0 && !formattedAddress().includes("Sorry, the") -->
                     <div id='suggestion-list' data-bind='foreach: filteredList'>
                         <div class='suggestion-list-item' data-bind='event: {click: function(data, event) {$root.toggleMarkerAnimationAndListItemStyle($index(),event.target)}}, attr: {id: "item-" + $index()}'>
                             <div class='item-number' data-bind='text: $index() + 1'></div>
@@ -93,19 +93,19 @@
                 </div>
 
             </div>
-        </div>
+        </aside>
 
         <!-- map-container will be populated through initMap function -->
-        <div id='map-container'></div>
-
+        <main id='map-container'></main>
+        
+        <script src='scripts - frameworks/knockout-v3.4.1.js'>
+        </script>
+        <script src='scripts - frameworks/app.js'>
+        </script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'>
         </script>
-        <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap'>
+        <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap' onerror='ViewModel.errorHandling()'>
         </script>
-        <script type='text/javascript' src='scripts - frameworks/knockout-v3.4.1.js'>
-        </script>
-        <script type='text/javascript' src='scripts - frameworks/app.js'>
-        </script>
-    </content>
+    </div>
 </body>
 </html>
