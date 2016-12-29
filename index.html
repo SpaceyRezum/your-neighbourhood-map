@@ -33,10 +33,10 @@
     </header>
 
     <div id='top-container'>
-        <aside id='sidebar'>
-            <div class='hamburger-button-container hidding-div'>
+        <aside id='sidebar' data-bind='css: {toggled : $root.sidebarToggled}'>
+            <div class='' data-bind='attr: {class: $root.sidebarToggled() ? "hamburger-button-container" : "hamburger-button-container hidding-div"}'>
                 <!-- Hamburger button to toggle sidebar on mobile version -->
-                <button type='button' class='hamburger is-closed' data-bind='click: toggleSidebar'>
+                <button type='button' data-bind='click: $root.toggleSidebar, attr: {class: $root.sidebarToggled() ? "is-open hamburger" : "is-closed hamburger"}'>
                     <span class='hamb-top'></span>
                     <span class='hamb-middle'></span>
                     <span class='hamb-bottom'></span>
