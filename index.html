@@ -14,8 +14,8 @@
 
 <body>
     <header>
-        <nav id='navbar'>
-            <div id='input-section'>
+        <nav class='navbar'>
+            <div class='input-section'>
                 <form>
                     <p style='text-decoration: underline'>Start checking what's cool in your hood!</p>
                     <input id='address' type='address' placeholder='Please enter an address...' data-bind='textInput: confirmedLocation'>&nbsp;
@@ -32,8 +32,8 @@
         </nav>
     </header>
 
-    <div id='top-container'>
-        <aside id='sidebar' data-bind='css: {toggled : $root.sidebarToggled}'>
+    <div class='top-container'>
+        <aside class='sidebar' data-bind='css: {toggled : $root.sidebarToggled}'>
             <div class='' data-bind='attr: {class: $root.sidebarToggled() ? "hamburger-button-container" : "hamburger-button-container hidding-div"}'>
                 <!-- Hamburger button to toggle sidebar on mobile version -->
                 <button type='button' data-bind='click: $root.toggleSidebar, attr: {class: $root.sidebarToggled() ? "is-open hamburger" : "is-closed hamburger"}'>
@@ -42,14 +42,14 @@
                     <span class='hamb-bottom'></span>
                 </button>
             </div>
-            <div id='result-section' data-bind='visible: formattedAddress().length > 0'>
+            <div class='result-section' data-bind='visible: formattedAddress().length > 0'>
                 <p data-bind='if: formattedAddress() !== "Favorited Venues"'>You searched for: </br>
                     </br>
                     <span data-bind='text: formattedAddress'></span>
                     </br>
                 </p>
 
-                <div id='address-details'>
+                <div class='address-details'>
 
                     <!-- button to display / hide transit options if available -->
                     <div class='transit-display' data-bind='if: filteredList().length > 0'>
@@ -59,7 +59,7 @@
 					<!-- Input to filter venues -->
 					<div class='filter-container' data-bind='visible: formattedAddress() !== "Favorited Venues" && !formattedAddress().includes("Sorry, the")'>
                         <p>Wanna filter the results? Type in what you're looking for! </p>
-                        <input id='filter' type='filterInput' placeholder='ex: Restaurants, Bars, etc.' data-bind='textInput: filterInput'> 
+                        <input class='filter' type='filterInput' placeholder='ex: Restaurants, Bars, etc.' data-bind='textInput: filterInput'> 
 						<button type='submit' data-bind='click: filterResults'>Filter</button>
                         <button type='submit' data-bind='click: removeFilter'>Remove Filter</button>
 					</div>
@@ -75,8 +75,9 @@
                     </div>
 
                     <!-- ko if: filteredList().length > 0 && !formattedAddress().includes("Sorry, the") -->
-                    <div id='suggestion-list' data-bind='foreach: filteredList'>
-                        <div class='suggestion-list-item' data-bind='event: {click: function(data, event) {$root.toggleMarkerAnimationAndListItemStyle($index(),event.target)}}, attr: {id: "item-" + $index()}'>
+                    <div class='suggestion-list' data-bind='foreach: filteredList'>
+                        <div data-bind='click: function(data, event) {$root.suggestionFocusChange(data, event, $index())}, attr: {class: parseInt($root.markerToAnimate()) == $index() ? "suggestion-list-item item-clicked" : "suggestion-list-item"}'>
+                        <!-- , css: { item-clicked : parseInt($root.markerToAnimate()) === $index() } -->
                             <div class='item-number' data-bind='text: $index() + 1'></div>
                             <div class='item-details'>
                                 <p class='item-title' data-bind='text: name'></p>
@@ -97,15 +98,24 @@
 
         <!-- map-container will be populated through initMap function -->
         <main id='map-container'></main>
-        
-        <script src='scripts - frameworks/knockout-v3.4.1.js'>
-        </script>
-        <script src='scripts - frameworks/app.js'>
-        </script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'>
-        </script>
-        <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap' onerror='ViewModel.errorHandling()'>
-        </script>
     </div>
+
+    <footer>
+        <div class='author'>
+            Created by Alexis Bellet
+        </div>
+        <div class='attribution'>
+            Data Provided by <a href='https://foursquare.com/'>FourSquare API</a> and Google Maps API
+        </div>
+    </footer>
+    
+    <script src='scripts - frameworks/knockout-v3.4.1.js'>
+    </script>
+    <script src='scripts - frameworks/app.js'>
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'>
+    </script>
+    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap' onerror='ViewModel.errorHandling()'>
+    </script>
 </body>
 </html>

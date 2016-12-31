@@ -18,7 +18,7 @@ body {
   color: #028cc3;
   background: black;
   width: 100%;
-  height: 98%;
+  height: 100%;
   margin: 0;
   overflow: hidden;
 }
@@ -31,19 +31,19 @@ header {
   display: flex;
 }
 
-#navbar {
+.navbar {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
 
-#input-section {
+.input-section {
   width: 70%;
   display: flex;
   align-self: center;
 }
 
-#input-section input {
+.input-section input {
   width: 40vmin;
   font-size: 1vmax;
   border-radius: 10px;
@@ -78,9 +78,9 @@ header {
 
 /* Main content container styling */
 
-#top-container {
+.top-container {
   width: 98%;
-  height: 86%;
+  height: 82%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -89,7 +89,7 @@ header {
 
 /* Sidebar functionalities */
 
-#sidebar {
+.sidebar {
   height: 100%;
   width: 40%;
   -webkit-transition: 300ms ease;
@@ -108,12 +108,12 @@ header {
   transition: 300ms ease;
 }
 
-#result-section,
-#suggestion-list {
+.result-section,
+.suggestion-list {
   height: 80%;
 }
 
-#address-details {
+.address-details {
   padding-right: 1vmin;
   margin-top: 1vmin;
   height: 80%;
@@ -136,13 +136,9 @@ header {
   border-radius: 10px;
 }
 
-#filter-categories {
-  margin: auto;
-}
-
 /* Suggestion List & suggestion list items */
 
-#suggestion-list {
+.suggestion-list {
   overflow-y: scroll;
 }
 
@@ -155,6 +151,11 @@ header {
   justify-content: space-around;
   border-top: 1px solid;
   margin-right: 4%;
+  -webkit-transition: 300ms linear;
+  -moz-transition: 300ms linear;
+  -ms-transition: 300ms linear;
+  -o-transition: 300ms linear;
+  transition: 300ms linear;
 }
 
 .suggestion-list-item .item-number {
@@ -378,20 +379,34 @@ header {
 
 /* Scrollbar Styling for Webkit Browser on Windows */
 
-#suggestion-list::-webkit-scrollbar-track {
+.suggestion-list::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   border-radius: 10px;
   background-color: #F5F5F5;
 }
 
-#suggestion-list::-webkit-scrollbar {
+.suggestion-list::-webkit-scrollbar {
   width: 12px;
 }
 
-#suggestion-list::-webkit-scrollbar-thumb {
+.suggestion-list::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   background-color: #555;
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 2vmin;
+}
+
+footer div {
+  margin-right: 3%;
 }
 
 /* Media Queries */
@@ -411,6 +426,10 @@ header {
     font-size: 2vmin;
   }
 
+  .top-container {
+    height: 86%;
+  }
+
   .favorite-list button {
     font-size: 3vmin;
   }
@@ -423,25 +442,18 @@ header {
     height: 110%;
   }
 
-  #input-section input,
-  .filter-container input {
+  .input-section input {
     font-size: 2vmin;
   }
 
   .filter-container input {
+    font-size: 3vmin;
     width: 95%;
     padding: 2%;
+    height: 40px;
   }
 
-  #filter-categories {
-    border-radius: 20px;
-    border: none;
-    font-size: 1.5vmax;
-    margin: 1.5vmin 0px;
-    background: white;
-  }
-
-  #sidebar {
+  .sidebar {
     width: 8%;
   }
 
@@ -451,5 +463,5 @@ header {
 
   .infowindow p {
     font-size: 2vmax;
-  };
+  }
 }

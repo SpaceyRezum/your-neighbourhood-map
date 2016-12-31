@@ -4,7 +4,9 @@ The Neighborhood Map App is a SPA (Single Page Application) with the purpose of 
 
 ## Getting Started
 
-Try out the Neighborhood Map App by downloading the current GitHub depository and launch it using a local server such as python SimpleHTTPServer functionality. Make sure you have python installed, open your command line interface, navigate to the downloaded depository and run the following code to launch a local server:
+Simply download the repository and launch index.html in your favorite browser.
+
+You can also try out the Neighborhood Map App by using a local server such as python SimpleHTTPServer functionality. Make sure you have python installed, open your command line interface, navigate to the downloaded depository and run the following code to launch a local server:
 
 ```
 python -m SimpleHTTPServer
