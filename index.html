@@ -76,8 +76,7 @@
 
                     <!-- ko if: filteredList().length > 0 && !formattedAddress().includes("Sorry, the") -->
                     <div class='suggestion-list' data-bind='foreach: filteredList'>
-                        <div data-bind='click: function(data, event) {$root.suggestionFocusChange(data, event, $index())}, attr: {class: parseInt($root.markerToAnimate()) == $index() ? "suggestion-list-item item-clicked" : "suggestion-list-item"}'>
-                        <!-- , css: { item-clicked : parseInt($root.markerToAnimate()) === $index() } -->
+                        <div data-bind='click: function(data, event) {$root.suggestionFocusChange($index())}, attr: {class: parseInt($root.itemFocused()) == $index() ? "suggestion-list-item item-clicked" : "suggestion-list-item"}'>
                             <div class='item-number' data-bind='text: $index() + 1'></div>
                             <div class='item-details'>
                                 <p class='item-title' data-bind='text: name'></p>
