@@ -138,6 +138,11 @@ header {
 
 /* Suggestion List & suggestion list items */
 
+.suggestion-list-container,
+.favorite-list-container {
+  height: 100%;  
+}
+
 .suggestion-list {
   overflow-y: scroll;
 }
@@ -403,6 +408,7 @@ footer {
   align-items: center;
   justify-content: flex-end;
   font-size: 2vmin;
+  margin-bottom: 5px;
 }
 
 footer div {

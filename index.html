@@ -18,16 +18,16 @@
             <div class='input-section'>
                 <form>
                     <p style='text-decoration: underline'>Start checking what's cool in your hood!</p>
-                    <input id='address' type='address' placeholder='Please enter an address...' data-bind='textInput: confirmedLocation'>&nbsp;
+                    <input id='address' type='address' placeholder='Please enter an address...' data-bind='textInput: formattedAddress'>&nbsp;
                     <!-- I used the click workaround because a textInput data-bind on the input field did not update the address observable when google autocomplete suggestions where used -->
                     <button type='submit' data-bind='click: function(data, event) {
-							updateMap(confirmedLocation()), removeFilter}'>Search</button>
+							updateMap(formattedAddress()), removeFilter}'>Search</button>
                 </form>
             </div>
 
             <!-- button to load the favorite venues as suggestionList -->
             <div class='favorite-list'>
-                <button style='text-decoration: underline' type='button' data-bind='click: $root.loadFavoriteList'>Favorites</button>
+                <button style='text-decoration: underline' type='button' data-bind='click: $root.displayHideFavorite, text: navButtonText'></button>
             </div>
         </nav>
     </header>
@@ -65,31 +65,53 @@
 					</div>
 
 					<div>
+                        <!-- message is invisible when Favorite button is clicked or error is thrown -->
 						<p data-bind='if: formattedAddress() !== "Favorited Venues" && !formattedAddress().includes("Sorry, the")'>
 							Here are the top <span data-bind='text: filteredList().length'></span> suggestions for the address &amp; filter you chose
                         </p>
+                        <!-- message is visible when Favorite button is clicked -->
                         <p data-bind='if: formattedAddress() === "Favorited Venues"'>Here are your favorited venues:
-                            <span data-bind='if: filteredList().length < 1'></br></br>It looks like you haven't favorited any places yet. </br>
+                            <span data-bind='if: favoriteList().length < 1'></br></br>It looks like you haven't favorited any places yet. </br>
 							What are you waiting for? :D</span>
                         </p>
                     </div>
 
-                    <!-- ko if: filteredList().length > 0 && !formattedAddress().includes("Sorry, the") -->
-                    <div class='suggestion-list' data-bind='foreach: filteredList'>
-                        <div data-bind='click: function(data, event) {$root.suggestionFocusChange($index())}, attr: {class: parseInt($root.itemFocused()) == $index() ? "suggestion-list-item item-clicked" : "suggestion-list-item"}'>
-                            <div class='item-number' data-bind='text: $index() + 1'></div>
-                            <div class='item-details'>
-                                <p class='item-title' data-bind='text: name'></p>
-                                <p class='item-type' data-bind='text: categories[0].name'></p>
-                                <p class='item-address'><span data-bind='text: location.address'></span> - <span data-bind='text: location.city'></span>
-                                </p>
-                            </div>
-                            <div class='favorite-container'>
-                                <button data-bind='click: $root.favorite, attr: {class: favorited() ? "favorited" : "fav-star"}'>
+                    <!-- Main suggestion list container is visible when site loads. Is invisible when Favorites button is clicked -->
+                    <div class='suggestion-list-container' data-bind='visible: filteredList().length > 0 && !formattedAddress().includes("Sorry, the") && navButtonText() === "Favorites"'>
+                        <div class='suggestion-list' data-bind='foreach: filteredList'>
+                            <div data-bind='click: function(data, event) {$root.suggestionFocusChange($index())}, attr: {class: parseInt($root.itemFocused()) == $index() ? "suggestion-list-item item-clicked" : "suggestion-list-item"}'>
+                                <div class='item-number' data-bind='text: $index() + 1'></div>
+                                <div class='item-details'>
+                                    <p class='item-title' data-bind='text: name'></p>
+                                    <p class='item-type' data-bind='text: categories[0].name'></p>
+                                    <p class='item-address'><span data-bind='text: location.address'></span> - <span data-bind='text: location.city'></span>
+                                    </p>
+                                </div>
+                                <div class='favorite-container'>
+                                    <button data-bind='click: $root.favorite, attr: {class: favorited() ? "favorited" : "fav-star"}'></button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- /ko -->
+                    
+                    <!-- Second suggestion list container, only for favorite venues. Visible when Favorites button is clicked -->
+                    <div class='favorite-list-container' data-bind='visible: navButtonText() === "Back to List"'>
+                        <!-- attribute will hide the scroll bar if no favorite venues are available -->
+                        <div class='suggestion-list' data-bind='foreach: favoriteList, attr: {style: favoriteList().length < 1 ? "overflow: hidden" : "overflow-y: scroll" }'>
+                            <div data-bind='click: function(data, event) {$root.suggestionFocusChange($index())}, attr: {class: parseInt($root.itemFocused()) == $index() ? "suggestion-list-item item-clicked" : "suggestion-list-item"}'>
+                                <div class='item-number' data-bind='text: $index() + 1'></div>
+                                <div class='item-details'>
+                                    <p class='item-title' data-bind='text: name'></p>
+                                    <p class='item-type' data-bind='text: categories[0].name'></p>
+                                    <p class='item-address'><span data-bind='text: location.address'></span> - <span data-bind='text: location.city'></span>
+                                    </p>
+                                </div>
+                                <div class='favorite-container'>
+                                    <button data-bind='click: $root.favorite, attr: {class: favorited() ? "favorited" : "fav-star"}'></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -110,11 +132,13 @@
     
     <script src='scripts - frameworks/knockout-v3.4.1.js'>
     </script>
-    <script src='scripts - frameworks/app.js'>
+    <script src='scripts - frameworks/viewmodel.js'>
+    </script>
+    <script src='scripts - frameworks/map.js'>
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'>
     </script>
-    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=ViewModel.initMap' onerror='ViewModel.errorHandling()'>
+    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=initMap' onerror='ViewModel.errorHandling()'>
     </script>
 </body>
 </html>
