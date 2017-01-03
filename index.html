@@ -6,7 +6,7 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Your new neighborhood map</title>
-    <meta description='Want to find what will be around you in your new neighborhood, enter the address and find out!'>
+    <meta name='description' content='Want to find what will be around you in your new neighborhood, enter the address and find out!'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel="stylesheet">
     <link rel='stylesheet' href='css/main.css'>
 </head>
@@ -18,10 +18,10 @@
             <div class='input-section'>
                 <form>
                     <p style='text-decoration: underline'>Start checking what's cool in your hood!</p>
-                    <input id='address' type='address' placeholder='Please enter an address...' data-bind='textInput: formattedAddress'>&nbsp;
+                    <input id='address' type='text' placeholder='Please enter an address...' data-bind='textInput: formattedAddress'>&nbsp;
                     <!-- I used the click workaround because a textInput data-bind on the input field did not update the address observable when google autocomplete suggestions where used -->
                     <button type='submit' data-bind='click: function(data, event) {
-							updateMap(formattedAddress()), removeFilter}'>Search</button>
+                            updateMap(formattedAddress()), removeFilter}'>Search</button>
                 </form>
             </div>
 
@@ -43,37 +43,37 @@
                 </button>
             </div>
             <div class='result-section' data-bind='visible: formattedAddress().length > 0'>
-                <p data-bind='if: formattedAddress() !== "Favorited Venues"'>You searched for: </br>
-                    </br>
+                <p data-bind='if: formattedAddress() !== "Favorited Venues"'>You searched for: <br>
+                    <br>
                     <span data-bind='text: formattedAddress'></span>
-                    </br>
+                    <br>
                 </p>
 
                 <div class='address-details'>
 
                     <!-- button to display / hide transit options if available -->
                     <div class='transit-display' data-bind='if: filteredList().length > 0'>
-                        <button type='button' data-bind='click: getTransitOptions'><span data-bind='text: displayOrHideTransit'></button>
-					</div>
+                        <button type='button' data-bind='click: getTransitOptions'><span data-bind='text: displayOrHideTransit'></span></button>
+                    </div>
 
-					<!-- Input to filter venues -->
-					<div class='filter-container' data-bind='visible: formattedAddress() !== "Favorited Venues" && !formattedAddress().includes("Sorry, the")'>
+                    <!-- Input to filter venues -->
+                    <div class='filter-container' data-bind='visible: formattedAddress() !== "Favorited Venues" && !formattedAddress().includes("Sorry, the")'>
                         <p>Wanna filter the results? Type in what you're looking for! </p>
-                        <input class='filter' type='filterInput' placeholder='ex: Restaurants, Bars, etc.' data-bind='textInput: filterInput'> 
-						<button type='submit' data-bind='click: filterResults'>Filter</button>
+                        <input class='filter' type='text' placeholder='ex: Restaurants, Bars, etc.' data-bind='textInput: filterInput'> 
+                        <button type='submit' data-bind='click: filterResults'>Filter</button>
                         <button type='submit' data-bind='click: removeFilter'>Remove Filter</button>
-					</div>
+                    </div>
 
-					<div>
+                    <div>
                         <!-- message is invisible when Favorite button is clicked or error is thrown -->
-						<p data-bind='if: formattedAddress() !== "Favorited Venues" && !formattedAddress().includes("Sorry, the")'>
-							Here are the top <span data-bind='text: filteredList().length'></span> suggestions for the address &amp; filter you chose
-                        </p>
-                        <!-- message is visible when Favorite button is clicked -->
-                        <p data-bind='if: formattedAddress() === "Favorited Venues"'>Here are your favorited venues:
-                            <span data-bind='if: favoriteList().length < 1'></br></br>It looks like you haven't favorited any places yet. </br>
-							What are you waiting for? :D</span>
-                        </p>
+                        <p data-bind='if: formattedAddress() !== "Favorited Venues" && !formattedAddress().includes("Sorry, the")'>
+                            Here are the top <span data-bind='text: filteredList().length'></span> suggestions for the address &amp; filter you chose
+                            </p>
+                            <!-- message is visible when Favorite button is clicked -->
+                            <p data-bind='if: formattedAddress() === "Favorited Venues"'>Here are your favorited venues:
+                                <span data-bind='if: favoriteList().length < 1'><br><br>It looks like you haven't favorited any places yet. <br>
+                            What are you waiting for? :D</span>
+                            </p>
                     </div>
 
                     <!-- Main suggestion list container is visible when site loads. Is invisible when Favorites button is clicked -->
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Second suggestion list container, only for favorite venues. Visible when Favorites button is clicked -->
                     <div class='favorite-list-container' data-bind='visible: navButtonText() === "Back to List"'>
                         <!-- attribute will hide the scroll bar if no favorite venues are available -->
@@ -129,16 +129,17 @@
             Data Provided by <a href='https://foursquare.com/'>FourSquare API</a> and Google Maps API
         </div>
     </footer>
-    
-    <script src='scripts - frameworks/knockout-v3.4.1.js'>
+
+    <script src='scripts%20-%20frameworks/knockout-v3.4.1.js'>
     </script>
-    <script src='scripts - frameworks/viewmodel.js'>
+    <script src='scripts%20-%20frameworks/viewmodel.js'>
     </script>
-    <script src='scripts - frameworks/map.js'>
+    <script src='scripts%20-%20frameworks/map.js'>
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'>
     </script>
     <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkthdQIGq5r03DTZtEPoae2qq033vibxo&libraries=places&callback=initMap' onerror='ViewModel.errorHandling()'>
     </script>
 </body>
+
 </html>
