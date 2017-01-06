@@ -1,6 +1,6 @@
-# Neighborhood Map App
+# What's Cool in Your Hood App
 
-The Neighborhood Map App is a SPA (Single Page Application) with the purpose of helping users discovering cool places to visit around their neighborhood or any location they are interested in. These places can be filtered and favorited for next time use.
+The Neighborhood Map App (or What's cool in your hood) is an SPA (Single Page Application) with the purpose of helping users discovering cool places to visit around their neighborhood or any location they are interested in. These places can be filtered and favorited for next time use.
 
 ## Getting Started
 
