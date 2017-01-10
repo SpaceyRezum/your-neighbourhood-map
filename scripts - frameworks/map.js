@@ -31,7 +31,7 @@ function initMap() {
     // loads favorite when the map is loaded
     ViewModel.loadFavoriteList();
     // intitially updates the map when the map is ready
-    ViewModel.updateMap('Toronto, ON, Canada');
+    ViewModel.confirmAddress('Toronto, ON, Canada');
 }
 
 function populateInfoWindow(relatedMarker, map) {

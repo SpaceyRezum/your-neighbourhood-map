@@ -19,9 +19,9 @@
                 <form>
                     <p style='text-decoration: underline'>Start checking what's cool in your hood!</p>
                     <input id='address' type='text' placeholder='Please enter an address...' data-bind='textInput: formattedAddress'>&nbsp;
-                    <!-- I used the click workaround because a textInput data-bind on the input field did not update the address observable when google autocomplete suggestions where used -->
+                    <!-- I used the DOM value in a click binding because a textInput two way bindinds had trouble reacting to event triggered by Google autocomplete suggestion -->
                     <button type='submit' data-bind='click: function(data, event) {
-                            updateMap(formattedAddress()), removeFilter}'>Search</button>
+                            confirmAddress($("#address").val()), removeFilter}'>Search</button>
                 </form>
             </div>
 
@@ -123,7 +123,7 @@
 
     <footer>
         <div class='author'>
-            Created by Alexis Bellet
+            Created by <a href="www.alexis-bellet.com">Alexis Bellet</a>
         </div>
         <div class='attribution'>
             Data Provided by <a href='https://foursquare.com/'>FourSquare API</a> and Google Maps API
