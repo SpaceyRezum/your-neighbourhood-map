@@ -4,15 +4,7 @@ The Neighborhood Map App (or What's cool in your hood) is an SPA (Single Page Ap
 
 ## Getting Started
 
-Simply download the repository and launch index.html in your favorite browser.
-
-You can also try out the Neighborhood Map App by using a local server such as python SimpleHTTPServer functionality. Make sure you have python installed, open your command line interface, navigate to the downloaded depository and run the following code to launch a local server:
-
-```
-python -m SimpleHTTPServer
-```
-
-Open your favorite internet browser, head to localhost:8000. You can now start using the Neighborhood Map App.
+Check at a [live version on my github pages](https://spaceyrezum.github.io/whats-cool-in-your-hood/)
 
 ### Prerequisites
 
